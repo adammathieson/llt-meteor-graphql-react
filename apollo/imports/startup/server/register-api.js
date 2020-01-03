@@ -6,6 +6,7 @@ import ResolutionsSchema from '../../api/resolutions/Resolutions.graphql'
 const testSchema = `
 type Query {
     hi: String
+    resolutions: [Resolution]
 }
 `
 
@@ -22,6 +23,18 @@ const resolvers = {
     Query: {
         hi() {
             return "Hello Level Up"
+        },
+        resolutions() {
+            return [
+                {
+                    _id: "jfkdlsjfkdlfj",
+                    name: "Get stuff done!"
+                },
+                {
+                    _id: "fjjjfjfjfjfj",
+                    name: "Lose some weight!"
+                }
+            ]
         }
     }
 }
