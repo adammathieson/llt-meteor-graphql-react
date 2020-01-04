@@ -4,7 +4,7 @@ import merge from 'lodash/merge'
 
 import ResolutionsSchema from '../../api/resolutions/Resolutions.graphql'
 import ResolutionResolvers from '../../api/resolutions/resolvers'
-
+// hi
 const testSchema = `
 type Query {
     hi: String
@@ -15,7 +15,6 @@ type Query {
 // const { ApolloServer, gql} = require('apollo-server') // needs dep download
 // const server = new ApolloServer({})
 
-// graphql syntax, not JS
 const typeDefs =  [
     testSchema,
     ResolutionsSchema,
