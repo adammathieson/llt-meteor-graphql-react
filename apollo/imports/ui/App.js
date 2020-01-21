@@ -9,16 +9,21 @@ import { withApollo } from 'react-apollo'
 
 console.log(Accounts)
 
-const App = ({ loading, resolutions, client }) => {
+const App = ({ loading, resolutions, client, user }) => {
     if (loading) return null
     return (
     <div>
-        <button onClick={() => {
+        { user._id ? (
+            <button onClick={() => {
             Meteor.logout()
             client.resetStore()
             }}>Logout</button>
-        <RegisterForm client={client}/>
-        <LoginForm client={client}/>
+        ) : (
+            <div>
+                <RegisterForm client={client}/>
+                <LoginForm client={client}/> 
+            </div>
+        ) }
         <ResolutionForm />
         <ul>
             {resolutions.map(resolution => (
@@ -35,9 +40,12 @@ const resolutionsQuery = gql`
         _id
         name
     }
+    user {
+        _id
+    }
 }
 `
 
 export default graphql(resolutionsQuery, {
-    props: ({data}) => ({ ...data })
+    props: ({ data }) => ({ ...data })
 })(withApollo(App))
