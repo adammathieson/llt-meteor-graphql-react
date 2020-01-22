@@ -1,16 +1,9 @@
 import Resolutions from './resolutions'
 
-// Resolutions.insert({
-//     name: "Test Res",
-// })
-
-// const res = Resolutions.find({}).fetch()
-// console.log(res)
-
 export default {
     Query: {
         resolutions(obj, args, { userId}) {
-            console.log("---->",userId)
+            // console.log("---->",userId)
             return Resolutions.find({
                 userId
             }).fetch()
@@ -18,7 +11,7 @@ export default {
     },
 
     Mutation: {
-        createResolution(obj, { name, userId }, context) {
+        createResolution(obj, { name }, { userId }) {
             const resolutionId = Resolutions.insert({
                 name,
                 userId
